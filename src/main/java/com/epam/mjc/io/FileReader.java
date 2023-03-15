@@ -4,17 +4,17 @@ import java.io.*;
 
 public class FileReader {
 
-    public Profile getDataFromFile(File file) {
+     public Profile getDataFromFile(File file) {
         String name = null;
         Integer age = 0;
         String email = null;
         Long phone = 0L;
-        BufferedReader br;
+        BufferedReader br = null;
         String st;
         try {
             br = new BufferedReader(new java.io.FileReader(file));
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println(e);
         }
         int i = 0;
         while (i < 4) {
@@ -23,7 +23,6 @@ public class FileReader {
                     if ((st = br.readLine()) == null)
                         break;
                     String result = st.split(" ")[1];
-
                     switch (i) {
                         case 0:
                             name = result;
@@ -42,11 +41,13 @@ public class FileReader {
                     }
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.err.println(e);
             } finally {
                 try {
                     br.close();
-                } catch (IOException e) {}
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
             }
         }
         Profile profile = new Profile(name, age, email, phone);
