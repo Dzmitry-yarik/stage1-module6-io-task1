@@ -2,7 +2,6 @@ package com.epam.mjc.io;
 
 import java.io.*;
 
-
 public class FileReader {
 
     public Profile getDataFromFile(File file) {
@@ -18,25 +17,25 @@ public class FileReader {
             throw new RuntimeException(e);
         }
         int i = 0;
-        while (i<4) {
+        while (i < 4) {
             try {
-                for ( i = 0; i <= 4; i++) {
-                if ((st = br.readLine()) == null)
-                    break;
-                String result = st.split(" ")[1];
+                for (i = 0; i <= 4; i++) {
+                    if ((st = br.readLine()) == null)
+                        break;
+                    String result = st.split(" ")[1];
 
                     switch (i) {
                         case 0:
-                             name = result;
+                            name = result;
                             break;
                         case 1:
-                             age = Integer.valueOf(result);
+                            age = Integer.valueOf(result);
                             break;
                         case 2:
-                             email = result;
+                            email = result;
                             break;
                         case 3:
-                             phone = Long.valueOf(result);
+                            phone = Long.valueOf(result);
                             break;
                         default:
                             break;
@@ -44,16 +43,13 @@ public class FileReader {
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            }finally {
+            } finally {
                 try {
                     br.close();
-                } catch (IOException e) {
-
                 }
             }
         }
-        Profile profile = new Profile(name,age,email,phone);
-        System.out.println(profile);
+        Profile profile = new Profile(name, age, email, phone);
         return profile;
     }
 }
