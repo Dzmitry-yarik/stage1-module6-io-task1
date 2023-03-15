@@ -46,7 +46,7 @@ public class FileReader {
             } finally {
                 try {
                     br.close();
-                }
+                } catch (IOException e) {}
             }
         }
         Profile profile = new Profile(name, age, email, phone);
