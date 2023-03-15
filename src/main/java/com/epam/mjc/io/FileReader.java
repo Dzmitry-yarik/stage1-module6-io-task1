@@ -1,7 +1,6 @@
 package com.epam.mjc.io;
 
 import java.io.*;
-import java.util.logging.Logger;
 
 public class FileReader {
 
@@ -48,11 +47,10 @@ public class FileReader {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    Logger logA = Logger.getLogger("org.stepic.java.logging.ClassA");
+                    e.getStackTrace();
                 }
             }
         }
-        Profile profile = new Profile(name, age, email, phone);
-        return profile;
+        return new Profile(name, age, email, phone);
     }
 }
