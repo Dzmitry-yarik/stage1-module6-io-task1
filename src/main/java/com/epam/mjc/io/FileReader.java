@@ -1,10 +1,12 @@
 package com.epam.mjc.io;
 
 import java.io.*;
+import java.util.logging.Logger;
 
 public class FileReader {
 
-     public Profile getDataFromFile(File file) {
+    public Profile getDataFromFile(File file) {
+
         String name = null;
         Integer age = 0;
         String email = null;
@@ -14,7 +16,7 @@ public class FileReader {
         try {
             br = new BufferedReader(new java.io.FileReader(file));
         } catch (FileNotFoundException e) {
-            System.err.println(e);
+            throw new IllegalArgumentException("File not found");
         }
         int i = 0;
         while (i < 4) {
@@ -41,12 +43,12 @@ public class FileReader {
                     }
                 }
             } catch (IOException e) {
-                System.err.println(e);
+                e.getStackTrace();
             } finally {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    System.err.println(e);
+                    Logger logA = Logger.getLogger("org.stepic.java.logging.ClassA");
                 }
             }
         }
